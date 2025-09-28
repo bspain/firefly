@@ -16,6 +16,19 @@ Firefly is a financial independence and retirement planning project. This reposi
 - Include comprehensive error handling for financial calculations
 - Add unit tests for all financial calculations and core business logic
 
+### Testing
+- Tests are decoupled from implementation
+- Write comprehensive tests for all financial calculations
+- Include edge case testing for financial scenarios
+- Test with realistic financial data ranges
+- Validate calculations against known financial formulas
+
+### Automated Behavioral Specifications
+- Behavioral requirements are captured as executable specifications
+- Specifications use the Given, When, Then format to describe application behavior
+- Specifications are executed within a continuous integration and deployment pipeline after the application code is built and all unit tests pass
+- Specifications must pass before a pull request is merged into the main branch
+
 ### Financial Data Handling
 - Always use appropriate data types for currency (avoid floating-point arithmetic for money)
 - Implement proper validation for financial inputs
@@ -33,12 +46,6 @@ Firefly is a financial independence and retirement planning project. This reposi
 - Provide clear examples for financial functions
 - Include references to financial concepts and methodologies used
 - Maintain a glossary of financial terms used in the codebase
-
-### Testing
-- Write comprehensive tests for all financial calculations
-- Include edge case testing for financial scenarios
-- Test with realistic financial data ranges
-- Validate calculations against known financial formulas
 
 ## Project Structure
 - Keep financial calculation logic separate from presentation layer
