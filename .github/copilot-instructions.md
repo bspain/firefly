@@ -11,9 +11,14 @@ Refer to the README.md for complete details, but key goals include:
 - Interactive interfaces with professional output and validation
 
 ## Development Philosophy
+Contributions to this codebase adhere to the conventional commit standard:
+- "fix:" a commit of the type FIX patches a bug in the codebase (this correlates with PATCH in Semantic Versioning).
+- "feat:" a commit of the type feat introduces a new FEATURE to the codebase (this correlates with MINOR in Semantic Versioning).
+
+types other than fix: and feat: are allowed, for example build:, chore:, ci:, docs:, style:, refactor:, perf:, test:, and others.
 
 ### SDLC Requirements
-**CRITICAL**: All contributions must follow the Behavior-Driven Development (BDD) process outlined in CONTRIBUTING.md:
+**CRITICAL**: All FEATURE contributions must follow the Behavior-Driven Development (BDD) process:
 
 1. **Define behavioral requirements first** - capture as executable specifications
 2. **Create specifications before implementation** - use Given-When-Then format
@@ -21,6 +26,8 @@ Refer to the README.md for complete details, but key goals include:
 4. **Develop code to meet specifications** - implement minimum necessary code
 5. **Validate all specifications pass** - maintain comprehensive coverage
 6. **CI/CD pipeline compliance** - all specifications must pass before merge
+
+All FIX contributions must follow standard Testing Strategy (MANDITORY) guidelines below
 
 ### Domain Architecture
 Organize work by business domains, not technical layers:
@@ -30,14 +37,20 @@ Organize work by business domains, not technical layers:
 - **Scenario Analysis**: What-if modeling and comparative analysis
 - **User Interfaces**: CLI, web dashboard, and API layers
 
+Each domain should have:
+- Clear interfaces and data contracts
+- Independent executable specifications
+- Comprehensive test coverage
+- Isolated development capabilities
+
 ## Coding Guidelines
 
 ### Testing Strategy (MANDATORY)
-- **Specifications first**: Write executable behavioral specifications before any implementation
+- **Specifications first**: Write executable behavioral specifications before any feature implementation
 - **TDD approach**: All code must have comprehensive unit test coverage
 - **Synthetic test data**: Create realistic test scenarios without manual data entry
 - **Isolated testing**: Enable independent development of different user experiences
-- **Coverage requirements**: Maintain high test coverage standards
+- **Coverage requirements**: Maintain 95% test coverage standards
 
 ### Language and Framework Preferences
 - Use modern, well-supported languages and frameworks appropriate for financial applications
@@ -45,16 +58,10 @@ Organize work by business domains, not technical layers:
 - Follow industry best practices for handling financial data
 
 ### Code Style
-- Write clean, readable, and well-documented code
+- Write clean, readable code
 - Use meaningful variable and function names, especially for financial terms
 - Include comprehensive error handling for financial calculations
 - Follow domain-driven design principles
-
-### Automated Behavioral Specifications
-- **REQUIRED**: Behavioral requirements are captured as executable specifications
-- Specifications use the Given, When, Then format to describe application behavior
-- Specifications are executed within a continuous integration and deployment pipeline after the application code is built and all unit tests pass
-- **NO EXCEPTIONS**: Specifications must pass before a pull request is merged into the main branch
 
 ### Financial Data Handling
 - Always use appropriate data types for currency (avoid floating-point arithmetic for money)
@@ -69,7 +76,8 @@ Organize work by business domains, not technical layers:
 - Follow OWASP guidelines for web application security
 
 ### Documentation
-- Document all financial formulas and calculations
+- Document all functions with accurate descriptions
+- Document all function paramaters with pertinent examples
 - Provide clear examples for financial functions
 - Include references to financial concepts and methodologies used
 - Maintain a glossary of financial terms used in the codebase
@@ -89,7 +97,7 @@ Organize work by business domains, not technical layers:
 ## Contribution Guidelines
 
 ### Pre-Implementation Requirements
-- **ALWAYS** start with behavioral specifications using Given-When-Then format
+- **ALWAYS** start with behavioral specifications for FEATURES using Given-When-Then format
 - Ensure specifications cover the intended user experience completely
 - Validate that specifications fail before implementing code (Red phase)
 - Design for testability and isolated development
@@ -100,6 +108,7 @@ Organize work by business domains, not technical layers:
 - Document the source of any financial formulas or methodologies used
 - Consider the impact of changes on existing user data and calculations
 - Follow the complete BDD cycle: Red-Green-Refactor
+- Adhere to trunk-based development: Feature branches should be scoped small and short-lived
 
 ### Quality Assurance
 - Maintain 100% specification coverage for behavioral requirements
