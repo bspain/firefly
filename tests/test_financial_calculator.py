@@ -20,7 +20,7 @@ class TestFinancialCalculator:
         """Test basic future value calculation with typical values."""
         # Test case: $1000 at 7% for 10 years should equal $1967.15
         result = self.calculator.future_value(1000, 0.07, 10)
-        expected = 1000 * (1.07**10)
+        expected = 1967.151357
         assert abs(result - expected) < 0.01
         assert abs(result - 1967.15) < 0.01
 
@@ -40,7 +40,7 @@ class TestFinancialCalculator:
         """Test future value calculation with one period."""
         # $5000 at 5% for 1 period should equal $5250
         result = self.calculator.future_value(5000, 0.05, 1)
-        expected = 5000 * 1.05
+        expected = 5250.0
         assert abs(result - expected) < 0.01
         assert abs(result - 5250) < 0.01
 
@@ -54,35 +54,35 @@ class TestFinancialCalculator:
         """Test future value calculation with high interest rate."""
         # Test with 50% annual return for 5 years
         result = self.calculator.future_value(1000, 0.5, 5)
-        expected = 1000 * (1.5**5)
+        expected = 7593.75
         assert abs(result - expected) < 0.01
 
     def test_future_value_fractional_interest_rate(self):
         """Test future value calculation with fractional interest rate."""
         # Test with 1.5% quarterly rate for 8 quarters (2 years)
         result = self.calculator.future_value(10000, 0.015, 8)
-        expected = 10000 * (1.015**8)
+        expected = 11264.926
         assert abs(result - expected) < 0.01
 
     def test_future_value_large_number_of_periods(self):
         """Test future value calculation with large number of periods."""
         # Test long-term compounding: 30 years
         result = self.calculator.future_value(1000, 0.07, 30)
-        expected = 1000 * (1.07**30)
+        expected = 7612.255
         assert abs(result - expected) < 0.01
 
     def test_future_value_very_small_interest_rate(self):
         """Test future value calculation with very small interest rate."""
         # Test with 0.1% annual rate
         result = self.calculator.future_value(1000, 0.001, 10)
-        expected = 1000 * (1.001**10)
+        expected = 1010.045
         assert abs(result - expected) < 0.01
 
     def test_future_value_negative_interest_rate(self):
         """Test future value calculation with negative interest rate (deflation)."""
         # Test with -2% annual rate (deflation scenario)
         result = self.calculator.future_value(1000, -0.02, 5)
-        expected = 1000 * (0.98**5)
+        expected = 903.921
         assert abs(result - expected) < 0.01
         assert result < 1000  # Should be less than present value
 
@@ -113,7 +113,7 @@ class TestFinancialCalculator:
         """Test future value calculation with very large numbers."""
         # Test with large present value
         result = self.calculator.future_value(1000000000, 0.05, 10)
-        expected = 1000000000 * (1.05**10)
+        expected = 1628894626.78
         assert abs(result - expected) < 1000  # Allow for some floating point precision
 
     def test_future_value_compound_growth_property(self):
@@ -138,7 +138,7 @@ class TestFinancialCalculator:
         """Test that future_value can be called as a static method."""
         # Should be callable without instance
         result = FinancialCalculator.future_value(1000, 0.05, 5)
-        expected = 1000 * (1.05**5)
+        expected = 1276.282
         assert abs(result - expected) < 0.01
 
     def test_future_value_docstring_examples(self):
