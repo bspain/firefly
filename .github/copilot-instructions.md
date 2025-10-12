@@ -51,6 +51,10 @@ Each domain should have:
 - **Synthetic test data**: Create realistic test scenarios without manual data entry
 - **Isolated testing**: Enable independent development of different user experiences
 - **Coverage requirements**: Maintain 95% test coverage standards
+- **Test hierarchy**: Unit tests verify implementation details; BDD/acceptance tests verify behavioral requirements
+  - Unit tests run first and must pass before acceptance tests
+  - Acceptance tests only run after both unit tests and quality checks pass
+  - Keep acceptance test scenarios focused on the "happy path" - edge cases are covered by unit tests
 
 ### Language and Framework Preferences
 - Use modern, well-supported languages and frameworks appropriate for financial applications
@@ -139,3 +143,24 @@ Remember that this project aims for:
 - Rollback capabilities for production issues
 
 All code contributions must support this automated pipeline approach.
+
+### CI/CD Pipeline Structure
+
+The project uses a three-stage pipeline:
+
+1. **Unit Tests** - Run first to verify implementation correctness
+   - Execute all unit tests with code coverage
+   - Must achieve 95% minimum coverage
+   - Uses Python 3.11
+
+2. **Quality Checks** - Run in parallel with unit tests
+   - Linting (flake8)
+   - Code formatting (black, isort)
+   - Type checking (mypy)
+   - Uses Python 3.11
+
+3. **Acceptance Tests** - Run only after unit tests and quality checks pass
+   - Execute BDD behavioral specifications
+   - Focus on primary "happy path" scenarios
+   - Edge cases are verified by unit tests, not acceptance tests
+   - Must pass for merge approval
