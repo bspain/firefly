@@ -40,7 +40,6 @@ This project is currently in early development, focusing on establishing solid f
 ## Getting Started
 
 ### Setup for Development
-*Documentation for setup and usage will be provided as the application develops.*
-
+See our Local Developer documentation at [`CONTRIBUTING.md`](CONTRIBUTING.md)
 ### Contributions
 See our AI Agent contributing instructions at [`.github/copilot-instructions.md`](.github/copilot-instructions.md)
