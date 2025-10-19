@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firefly Planner</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" />
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Inter', sans-serif;
+        background: #0f172a;
+        color: #f8fafc;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+
+      .card {
+        background: rgba(15, 23, 42, 0.85);
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        border-radius: 12px;
+        padding: 32px 48px;
+        text-align: center;
+        box-shadow: 0 16px 48px rgba(15, 23, 42, 0.4);
+      }
+
+      h1 {
+        font-size: 32px;
+        margin-bottom: 12px;
+      }
+
+      p {
+        margin: 6px 0;
+        font-size: 16px;
+        color: rgba(226, 232, 240, 0.85);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1 id="app-name">Firefly</h1>
+      <p id="product-name">Firefly Planner</p>
+      <p>Version <span id="app-version">0.1.0</span></p>
+    </div>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

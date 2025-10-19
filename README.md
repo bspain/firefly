@@ -16,10 +16,10 @@ Firefly is a comprehensive financial independence and retirement planning applic
 - **Year-by-Year Projections**: Detailed breakdown of financial growth from current age to retirement
 - **Retirement Withdrawal Modeling**: Project portfolio sustainability during retirement years
 
-### 💻 User Interface
-- **Interactive CLI**: Command-line interface for comprehensive financial analysis
-- **Professional Output**: Formatted tables and comprehensive analysis reports
-- **Input Validation**: Robust error handling and data validation throughout
+### 💻 Techincal Capabilities
+- **Web Application**: Web based application that allows easy visualization of financial profile, planning, portfolio management and calculations
+- **Local Storage**: All application financial data is stored on a users local machine.  No personally indentifyable data will be transmitted between any internet based services that the application interacts with.
+
 
 ## Project Vision
 
