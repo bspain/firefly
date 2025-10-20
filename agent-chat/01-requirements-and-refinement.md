@@ -56,3 +56,20 @@ Drafted behavior-style specs in requirements-v1.md, using Gherkin scenarios with
 Made changes.
 
 effective_change: f0f6c549c349a00bdedf1d6720dd45106318222e
+
+ben_spain:
+Previously you responded with "Natural next steps: 1) align on the missing assumptions above; 2) restructure the requirements with those sections; 3) draft the MVP feature list once terminology is locked."
+Given that we completed the task of completing the `assumptions-clarifications.md` doc, and authored the `requirements-v1.md` specification document, what is the next logical setp you suggest?  In your previous response you also mentioned "Introduce a short glossary".  Please create an appropriate document for this.
+
+copilot:
+Created [](file:///workspaces/firefly/specifications/glossary.md)
+
+Since the assumptions are clarified and requirements-v1.md is in place, the next logical step is to draft the MVP feature list—map each behavior spec to concrete deliverables (UI views, data models, calculations) and prioritize them so we can plan implementation slices.
+
+Created glossary.md with concise definitions for the key Coast FIRE concepts, so we now have a shared vocabulary for that feature planning pass.
+
+Natural next step: outline the MVP feature list (e.g., asset/liability editor, projection engine, summary UI) and capture acceptance notes per item before we start designing the architecture.
+
+Made changes.
+
+effective_change: ee3462c9f2710a48d31f6259054f49ec0b5ab106
