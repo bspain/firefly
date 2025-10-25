@@ -73,3 +73,15 @@ Natural next step: outline the MVP feature list (e.g., asset/liability editor, p
 Made changes.
 
 effective_change: ee3462c9f2710a48d31f6259054f49ec0b5ab106
+
+ben_spain:
+lets create the data models for our application.  it will be much easier to develop executable specifications to validate application behavior when we have a good set of sample data to work with.  good sample data starts with a good schema for the data.
+
+copilot:
+Created [](file:///workspaces/firefly/specifications/data-models.md)
+
+Added data-models.md outlining the schema (entities, enums, relationships) and a full sample JSON dataset aligned with the current requirements and glossary. With the data model in place, the next step is to author executable specifications that load this sample plan and validate the behaviors defined in requirements-v1.md.
+
+Made changes.
+
+effective_change: bc0342659c6d7ab498e4724b27c519962df0c35f
