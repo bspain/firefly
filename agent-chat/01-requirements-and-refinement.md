@@ -85,3 +85,27 @@ Added data-models.md outlining the schema (entities, enums, relationships) and a
 Made changes.
 
 effective_change: bc0342659c6d7ab498e4724b27c519962df0c35f
+
+ben_spain:
+move the `data-models.md` file into a new './models/' folder.  Keep the opening paragraph and the #sym:## Overview section in that document.  Every description in #sym:## Entity Definitions  can be better defined in a JSON schema format, so let's move all those definitions into a './models/schema/plan.json' file.  Then, also move #sym:## Sample Dataset  into a './models/samples/coast-fire-001.json'.  Feel free to adjust filenames and folder structure if there is a more standard way to create files for this type of information. 
+
+copilot:
+Created [](file:///workspaces/firefly/models)
+
+Created [](file:///workspaces/firefly/models/schema)
+
+Created [](file:///workspaces/firefly/models/samples)
+
+Created [](file:///workspaces/firefly/models/data-models.md)
+
+Created [](file:///workspaces/firefly/models/schema/plan.json)
+
+Created [](file:///workspaces/firefly/models/samples/coast-fire-001.json)
+
+Using "Apply Patch"
+
+Moved the modeling artifacts into a dedicated structure: data-models.md now carries the overview, plan.json expresses the full plan schema in JSON Schema, and coast-fire-001.json holds the representative dataset. Ready to start wiring executable specs against the schema (next step: validate the sample against the schema and build initial spec fixtures).
+
+Made changes.
+
+effective_change: 90bfc0467283c7babc628e3a5df97c371c71f836
