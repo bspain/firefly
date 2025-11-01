@@ -109,3 +109,53 @@ Moved the modeling artifacts into a dedicated structure: data-models.md now carr
 Made changes.
 
 effective_change: 90bfc0467283c7babc628e3a5df97c371c71f836
+
+ben_spain:
+I have updated #sym:## Feature-v1-002: Manage asset and liability inventories to better describe how data will persist in the plan.  As I review the data schema in `plan.json` is occures to me that the structure of `AssetAccount` and `Liability` do not support a list of updated balance values that are entered by the user.  If you concur, correct the `plan.json` and the sample data in `coast-fire-001.json` to account for this.
+
+copilot:
+Using "Apply Patch"
+
+
+```
+
+```
+
+
+Using "Apply Patch"
+
+
+```
+
+```
+
+
+Using "Apply Patch"
+
+
+```
+
+```
+
+
+Using "Apply Patch"
+
+
+```
+
+```
+
+
+Using "Apply Patch"
+
+
+```
+
+```
+Updated plan.json so both `AssetAccount` and `Liability` capture dated balance histories via the new `BalanceSnapshot` array, satisfying the persistence behavior spelled out in Feature-v1-002. Refreshed coast-fire-001.json to match—each asset and liability now carries at least one dated balance entry, and the qualified asset includes the 2025-11-15 update to mirror the example scenario.
+
+Next up: validate the sample against the schema (e.g., with `ajv` or similar) and adjust any processing logic or specs that still expect single `currentBalance` fields.
+
+Made changes.
+
+effective_change: d0254ade0b780751caf5b35cbfdaa96ab90daca2
