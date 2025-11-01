@@ -1,3 +1,7 @@
+# Customer Interview
+This document is represents the initial conversation with the customer
+
+## User Described Problem Statement
 I would like to build an app that helps me visualize my "Coast FIRE" plan.  Coast Financial Independence / Retire Early (FIRE) is a financial goal plan where someone has earned enough in their investment portfolio to achieve a satisfactory retirement lifestyle (around age 60 for example) provided they continue working at a reduced income rate (during age 45-60 for example) to allow for growth in their portfolio.
 
 I presently use an Excel spreadsheet to model some much of my own Coast FIRE plan, but there are several "what-if" scenarios that I would like to model where I find using Excel to be difficult.  Examples of "what-if" scenarios include: working additional years at my current salary before entering the 'coast' phase, what type of salary need I would have during my 'coast' phase and my subsequent retirement phase, drawing some supplemental income from my investment portfolio during my 'coast' phase to offset an income shortfall.
