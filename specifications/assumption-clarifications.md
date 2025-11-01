@@ -46,7 +46,7 @@ The application should allow this to be specified as part of building the plan.
 The first version of the application should not be concerned with modeling transaction costs.
 
 - Will the replacement residence and travel trailer be purchased outright? If financed, what loan terms apply?
-The default behavior of the application should assume that any replacement of the primary residence will be paid for in case.
+The default behavior of the application should assume that any replacement of the primary residence will be paid for in cash.
 
 ## Liabilities
 - For each liability, what are the interest rate, payment schedule, and payoff horizon?
