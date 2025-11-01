@@ -159,3 +159,44 @@ Next up: validate the sample against the schema (e.g., with `ajv` or similar) an
 Made changes.
 
 effective_change: d0254ade0b780751caf5b35cbfdaa96ab90daca2
+
+ben_spain:
+Please fix the error from `ajv-cli`
+```
+npx ajv-cli -s models/schema/plan.json -d models/samples/coast-fire-001.json 
+schema models/schema/plan.json is invalid
+error: unknown format "date" ignored in schema at path "#/properties/createdAt"
+```
+
+copilot:
+Using "Apply Patch"
+
+
+```
+
+```
+
+
+Using "Apply Patch"
+
+
+```
+
+```
+
+
+Using "Apply Patch"
+
+
+```
+
+```
+
+
+Searched text for `"format": "date"` (`**/models/schema/plan.json`), no results
+
+Replaced the schema’s hard-coded `format: "date"` usage with a reusable `DateString` definition (`^\d{4}-\d{2}-\d{2}$`) and wired all date fields—plan timestamps, balance snapshots, liability payoff dates—to reference it. This keeps date validation intact without relying on Ajv’s optional format plugin, so `npx ajv-cli -s plan.json -d models/samples/coast-fire-001.json` should now pass.
+
+Made changes.
+
+effective_change: e7a6b5e68c912bcf03786a65b49cbde3c2bc22ba
