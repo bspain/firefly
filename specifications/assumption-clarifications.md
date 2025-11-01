@@ -15,9 +15,9 @@ Answer to this question can be found in the previous answer
 In a typical Coast FIRE plan, one is not making ongoing contributions to their portfolio during the coast phase.
 
 - At what age do withdrawals begin from each account type (qualified, Roth, taxable, HSA)?
-Withdrawl plans will occur in the following order: Non-Qualified, Qualified, HSA, Roth, Accumulated Life Insurance, Cash Accounts, Lifestyle Assets
+Withdrawal plans will occur in the following order: Non-Qualified, Qualified, HSA, Roth, Accumulated Life Insurance, Cash Accounts, Lifestyle Assets
 
-Note: It is NOT a goal of the Coast FIRE application to model the full complexity of a retirement plan.  It will be assumed that any actual retirement withdrawl strategy would be perfomed with the aid of a qualified financial planner and tax services professional.
+Note: It is NOT a goal of the Coast FIRE application to model the full complexity of a retirement plan.  It will be assumed that any actual retirement withdrawal strategy would be performed with the aid of a qualified financial planner and tax services professional.
 
 
 ## Income & Benefits
@@ -26,7 +26,7 @@ Yes, the plan can expect COLA to apply to Social Security benefits at a rate of 
 
 - During the coast phase, how should income shortfalls be covered (specific accounts, proportional drawdowns, new debt)?
 Coast Fire plans should be built with a minimal shortfall during the Coast phase.  In the event that shortfalls are needed, the first source should be withdrawing from contributions to Roth (not from earnings until after 59.5 years of age).  The application should allow the user to enter the details of their contributions to any Roth accounts for this purpose.
-For the version of the application, it can assume that any withdrawl from any other source will incur a 10% early withdrawl penalty.
+For the version of the application, it can assume that any withdrawal from any other source will incur a 10% early withdrawal penalty.
 
 ## Expenses & Inflation
 - Should lifestyle expenses and medical expenses use different inflation rates? If so, what rates should we model?
@@ -72,7 +72,7 @@ This will not be a feature of the first version of the app, but it can be expect
 - How frequently will you update asset balances and liabilities (monthly, quarterly)?
 Users can expect to update twice a month.  A future version of the app may allow for the user to provide connectivity to accounts to retrive asset and liability information.
 - Do you want to import/export data via CSV or other formats in the initial version?
-The first version should allow the user to createa a list of assets and liabilities, and then provide initial values.  The user must be able to add and remove liabilities from the plan in subsequent sessions with the application.  The application file format does not need to maintain a history of previous assets and liabilities, but should present the user an oppertunity to save a copy of the asset and liability information anytime they are about to save changes in the asset and liability list.
+The first version should allow the user to create a list of assets and liabilities, and then provide initial values.  The user must be able to add and remove liabilities from the plan in subsequent sessions with the application.  The application file format does not need to maintain a history of previous assets and liabilities, but should present the user an opportunity to save a copy of the asset and liability information anytime they are about to save changes in the asset and liability list.
 
 ## Other Considerations
 - Are there legal or tax jurisdictions we should assume for calculations?

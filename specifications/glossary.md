@@ -1,8 +1,8 @@
 # Glossary
 
 ## Phases
-- **Accumulation Phase**: The career period focused on maximizing savings and investment contributions, generally ages 22	349 in the base plan.
-- **Coast Phase**: The period when earned income can drop substantially because existing assets are projected to grow to the retirement target without additional contributions; typically ages 50	365.
+- **Accumulation Phase**: The career period focused on maximizing savings and investment contributions, generally ages 22-49 in the base plan.
+- **Coast Phase**: The period when earned income can drop substantially because existing assets are projected to grow to the retirement target without additional contributions; typically ages 50-65.
 - **Retirement Phase**: The period when portfolio withdrawals fully cover lifestyle expenses; begins once earned income ceases (default age 66 onward).
 
 ## Financial Terms
@@ -21,4 +21,4 @@
 ## Workflow Concepts
 - **Plan File**: The persisted data store containing all user inputs, assumptions, and projection parameters.
 - **Snapshot Export**: Optional operation that saves the current asset and liability lists to a timestamped copy during plan saves.
-- **Specification by Example**: Requirements technique using concrete examples (Given	7when	7then) to describe expected behaviors.
+- **Specification by Example**: Requirements technique using concrete examples (Given-When-Then) to describe expected behaviors.
