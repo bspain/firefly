@@ -1,7 +1,7 @@
 effective_change: bfc0a2d5910ad3fdcb3fa5cc4ef0eebe43adf826
 
 ben_spain: 
-Attached are the requirements of an applicaiton that I would like to build.  Please read through them.
+Attached are the requirements of an application that I would like to build.  Please read through them.
 Before we actually build this application however, I would first like to review the requirements and discuss any updates that we should address first.  Examples might be different terms that better describe the requirement, or additional informaiton to help make the applicaiton useful in modeling a Coast FIRE plan.
 Let's treat this requirements document as a standard codified artifact for the project and work together to create an effective set of requirements before we begin building the applicaiton itself.
 
