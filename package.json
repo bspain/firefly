@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "dev": "npm run build && electron .",
-    "build": "tsc && cd src/renderer && tsc",
+    "build": "tsc && cd src/renderer && tsc && cp index.html ../../dist/renderer/",
     "test": "npm run build && cucumber-js --require-module ts-node/register --require 'tests/steps/*.ts' features/",
     "test:unit": "jest",
     "lint": "eslint src/ --ext .ts",
