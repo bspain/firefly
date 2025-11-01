@@ -1,0 +1,661 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://firefly.app/schemas/plan.json",
+  "title": "Coast FIRE Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "planId",
+    "label",
+    "version",
+    "createdAt",
+    "updatedAt",
+    "ownerProfile",
+    "phases",
+    "accounts",
+    "incomeAssumptions",
+    "expenseAssumptions",
+    "events",
+    "housingTransition",
+    "projectionSettings",
+    "persistencePolicy"
+  ],
+  "properties": {
+    "planId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "label": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date"
+    },
+    "ownerProfile": {
+      "$ref": "#/definitions/OwnerProfile"
+    },
+    "phases": {
+      "$ref": "#/definitions/PhaseSettings"
+    },
+    "accounts": {
+      "$ref": "#/definitions/Accounts"
+    },
+    "incomeAssumptions": {
+      "$ref": "#/definitions/IncomeAssumptions"
+    },
+    "expenseAssumptions": {
+      "$ref": "#/definitions/ExpenseAssumptions"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/OneTimeEvent"
+      },
+      "default": []
+    },
+    "housingTransition": {
+      "$ref": "#/definitions/HousingTransition"
+    },
+    "projectionSettings": {
+      "$ref": "#/definitions/ProjectionSettings"
+    },
+    "persistencePolicy": {
+      "$ref": "#/definitions/PersistencePolicy"
+    }
+  },
+  "definitions": {
+    "PhaseType": {
+      "type": "string",
+      "enum": [
+        "ACCUMULATION",
+        "COAST",
+        "RETIREMENT"
+      ]
+    },
+    "AccountType": {
+      "type": "string",
+      "enum": [
+        "QUALIFIED",
+        "ROTH",
+        "NON_QUALIFIED",
+        "CASH",
+        "LIFESTYLE",
+        "INSURANCE",
+        "HSA",
+        "OTHER"
+      ]
+    },
+    "LiabilityCadence": {
+      "type": "string",
+      "enum": [
+        "MONTHLY",
+        "QUARTERLY",
+        "ANNUAL",
+        "OTHER"
+      ]
+    },
+    "EventType": {
+      "type": "string",
+      "enum": [
+        "EXPENSE",
+        "INFLOW"
+      ]
+    },
+    "SnapshotExportMode": {
+      "type": "string",
+      "enum": [
+        "PROMPT",
+        "ALWAYS",
+        "NEVER"
+      ]
+    },
+    "OwnerProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "currentAge",
+        "targetRetirementAge",
+        "planningHorizonAge",
+        "baseYear"
+      ],
+      "properties": {
+        "currentAge": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "targetRetirementAge": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "planningHorizonAge": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "baseYear": {
+          "type": "integer",
+          "minimum": 1900
+        }
+      }
+    },
+    "PhaseSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phases"
+      ],
+      "properties": {
+        "phases": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/Phase"
+          }
+        }
+      }
+    },
+    "Phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phaseType",
+        "startAge",
+        "endAge",
+        "contributionPolicy"
+      ],
+      "properties": {
+        "phaseType": {
+          "$ref": "#/definitions/PhaseType"
+        },
+        "startAge": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "endAge": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "contributionPolicy": {
+          "$ref": "#/definitions/ContributionPolicy"
+        }
+      }
+    },
+    "ContributionPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "annualContribution",
+        "sourceAccountIds"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "ACTIVE",
+            "PAUSED"
+          ]
+        },
+        "annualContribution": {
+          "type": "number",
+          "minimum": 0
+        },
+        "sourceAccountIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "BalanceSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "date",
+        "amount"
+      ],
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "amount": {
+          "type": "number"
+        }
+      }
+    },
+    "Accounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assets",
+        "liabilities"
+      ],
+      "properties": {
+        "assets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AssetAccount"
+          }
+        },
+        "liabilities": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Liability"
+          }
+        }
+      }
+    },
+    "AssetAccount": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "accountId",
+        "name",
+        "accountType",
+        "balanceHistory"
+      ],
+      "properties": {
+        "accountId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "accountType": {
+          "$ref": "#/definitions/AccountType"
+        },
+        "balanceHistory": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/BalanceSnapshot"
+          }
+        },
+        "costBasis": {
+          "type": "number"
+        },
+        "allowRothContributionWithdrawals": {
+          "type": "boolean",
+          "default": false
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "Liability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "liabilityId",
+        "name",
+        "interestRate",
+        "paymentCadence",
+        "paymentAmount",
+        "balanceHistory"
+      ],
+      "properties": {
+        "liabilityId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "interestRate": {
+          "type": "number"
+        },
+        "paymentCadence": {
+          "$ref": "#/definitions/LiabilityCadence"
+        },
+        "paymentAmount": {
+          "type": "number"
+        },
+        "balanceHistory": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/BalanceSnapshot"
+          }
+        },
+        "payoffDate": {
+          "type": "string",
+          "format": "date"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": true
+        }
+      }
+    },
+    "IncomeAssumptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "coastPhase",
+        "retirementPhase",
+        "socialSecurity",
+        "otherIncomeSources"
+      ],
+      "properties": {
+        "coastPhase": {
+          "$ref": "#/definitions/CoastIncome"
+        },
+        "retirementPhase": {
+          "$ref": "#/definitions/RetirementIncome"
+        },
+        "socialSecurity": {
+          "$ref": "#/definitions/SocialSecurity"
+        },
+        "otherIncomeSources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OtherIncomeSource"
+          },
+          "default": []
+        }
+      }
+    },
+    "CoastIncome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annualNeed",
+        "annualIncome",
+        "shortfallPolicy"
+      ],
+      "properties": {
+        "annualNeed": {
+          "type": "number"
+        },
+        "annualIncome": {
+          "type": "number"
+        },
+        "shortfallPolicy": {
+          "$ref": "#/definitions/ShortfallPolicy"
+        }
+      }
+    },
+    "ShortfallPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primarySource",
+        "trackRothContributions",
+        "earlyWithdrawalPenaltyRate"
+      ],
+      "properties": {
+        "primarySource": {
+          "$ref": "#/definitions/AccountType"
+        },
+        "trackRothContributions": {
+          "type": "boolean"
+        },
+        "earlyWithdrawalPenaltyRate": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "RetirementIncome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "annualNeed",
+        "medicalNeed"
+      ],
+      "properties": {
+        "annualNeed": {
+          "type": "number"
+        },
+        "medicalNeed": {
+          "type": "number"
+        }
+      }
+    },
+    "SocialSecurity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "startAge",
+        "baseAnnualBenefit",
+        "colaRate"
+      ],
+      "properties": {
+        "startAge": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "baseAnnualBenefit": {
+          "type": "number"
+        },
+        "colaRate": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "OtherIncomeSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceId",
+        "name",
+        "startAge",
+        "endAge",
+        "annualAmount"
+      ],
+      "properties": {
+        "sourceId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "startAge": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "endAge": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "annualAmount": {
+          "type": "number"
+        }
+      }
+    },
+    "ExpenseAssumptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "globalInflationRate",
+        "expenseCategories"
+      ],
+      "properties": {
+        "globalInflationRate": {
+          "type": "number",
+          "minimum": 0
+        },
+        "expenseCategories": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ExpenseCategory"
+          },
+          "default": []
+        }
+      }
+    },
+    "ExpenseCategory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "categoryId",
+        "name"
+      ],
+      "properties": {
+        "categoryId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "inflationRate": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "OneTimeEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eventId",
+        "name",
+        "eventType",
+        "age",
+        "amount",
+        "applyInflation"
+      ],
+      "properties": {
+        "eventId": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "eventType": {
+          "$ref": "#/definitions/EventType"
+        },
+        "age": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "amount": {
+          "type": "number"
+        },
+        "applyInflation": {
+          "type": "boolean"
+        }
+      }
+    },
+    "HousingTransition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "targetAge",
+        "salePrice",
+        "replacementCost",
+        "transactionCostsModeled"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "targetAge": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "salePrice": {
+          "type": "number"
+        },
+        "replacementCost": {
+          "type": "number"
+        },
+        "transactionCostsModeled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ProjectionSettings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rateOfReturnByPhase",
+        "analysisTimeframe",
+        "withdrawalOrder",
+        "projectionYears"
+      ],
+      "properties": {
+        "rateOfReturnByPhase": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ACCUMULATION",
+            "COAST",
+            "RETIREMENT"
+          ],
+          "properties": {
+            "ACCUMULATION": {
+              "type": "number"
+            },
+            "COAST": {
+              "type": "number"
+            },
+            "RETIREMENT": {
+              "type": "number"
+            }
+          }
+        },
+        "analysisTimeframe": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "startYear",
+            "endYear"
+          ],
+          "properties": {
+            "startYear": {
+              "type": "integer"
+            },
+            "endYear": {
+              "type": "integer"
+            }
+          }
+        },
+        "withdrawalOrder": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountType"
+          },
+          "minItems": 1
+        },
+        "projectionYears": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "default": []
+        }
+      }
+    },
+    "PersistencePolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "snapshotExportMode",
+        "storagePath"
+      ],
+      "properties": {
+        "snapshotExportMode": {
+          "$ref": "#/definitions/SnapshotExportMode"
+        },
+        "storagePath": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

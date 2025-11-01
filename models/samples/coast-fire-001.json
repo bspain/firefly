@@ -1,0 +1,273 @@
+{
+  "planId": "sample-coast-fire-001",
+  "label": "Base Coast FIRE Scenario",
+  "version": 1,
+  "createdAt": "2025-10-01",
+  "updatedAt": "2025-10-25",
+  "ownerProfile": {
+    "currentAge": 48,
+    "targetRetirementAge": 60,
+    "planningHorizonAge": 100,
+    "baseYear": 2025
+  },
+  "phases": {
+    "phases": [
+      {
+        "phaseType": "ACCUMULATION",
+        "startAge": 22,
+        "endAge": 49,
+        "contributionPolicy": {
+          "status": "ACTIVE",
+          "annualContribution": 38000,
+          "sourceAccountIds": [
+            "asset-qualified"
+          ]
+        }
+      },
+      {
+        "phaseType": "COAST",
+        "startAge": 50,
+        "endAge": 65,
+        "contributionPolicy": {
+          "status": "PAUSED",
+          "annualContribution": 0,
+          "sourceAccountIds": []
+        }
+      },
+      {
+        "phaseType": "RETIREMENT",
+        "startAge": 66,
+        "endAge": 100,
+        "contributionPolicy": {
+          "status": "PAUSED",
+          "annualContribution": 0,
+          "sourceAccountIds": []
+        }
+      }
+    ]
+  },
+  "accounts": {
+    "assets": [
+      {
+        "accountId": "asset-qualified",
+        "name": "Qualified Investment Accounts",
+        "accountType": "QUALIFIED",
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 1000000
+          },
+          {
+            "date": "2025-11-15",
+            "amount": 1005000
+          }
+        ],
+        "costBasis": 680000,
+        "allowRothContributionWithdrawals": false,
+        "metadata": {
+          "notes": "401k, IRA, pension combined"
+        }
+      },
+      {
+        "accountId": "asset-roth",
+        "name": "Roth Accounts",
+        "accountType": "ROTH",
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 225000
+          }
+        ],
+        "costBasis": 185000,
+        "allowRothContributionWithdrawals": true,
+        "metadata": {}
+      },
+      {
+        "accountId": "asset-insurance",
+        "name": "Accumulated Life Insurance Value",
+        "accountType": "INSURANCE",
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 100000
+          }
+        ],
+        "costBasis": 75000,
+        "allowRothContributionWithdrawals": false,
+        "metadata": {}
+      },
+      {
+        "accountId": "asset-non-qualified",
+        "name": "Taxable Brokerage",
+        "accountType": "NON_QUALIFIED",
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 65000
+          }
+        ],
+        "costBasis": 50000,
+        "allowRothContributionWithdrawals": false,
+        "metadata": {}
+      },
+      {
+        "accountId": "asset-cash",
+        "name": "Cash Accounts",
+        "accountType": "CASH",
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 30000
+          }
+        ],
+        "costBasis": 30000,
+        "allowRothContributionWithdrawals": false,
+        "metadata": {}
+      },
+      {
+        "accountId": "asset-hsa",
+        "name": "Health Savings Accounts",
+        "accountType": "HSA",
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 30000
+          }
+        ],
+        "costBasis": 30000,
+        "allowRothContributionWithdrawals": false,
+        "metadata": {}
+      },
+      {
+        "accountId": "asset-lifestyle",
+        "name": "Primary Residence",
+        "accountType": "LIFESTYLE",
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 650000
+          }
+        ],
+        "costBasis": 420000,
+        "allowRothContributionWithdrawals": false,
+        "metadata": {
+          "notes": "Sold during housing transition"
+        }
+      }
+    ],
+    "liabilities": [
+      {
+        "liabilityId": "liability-mortgage",
+        "name": "Primary Mortgage",
+        "interestRate": 0.04,
+        "paymentCadence": "MONTHLY",
+        "paymentAmount": 1400,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 130000
+          }
+        ],
+        "payoffDate": "2034-06-01",
+        "metadata": {}
+      },
+      {
+        "liabilityId": "liability-auto",
+        "name": "Automobile Loan",
+        "interestRate": 0.05,
+        "paymentCadence": "MONTHLY",
+        "paymentAmount": 550,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 28000
+          }
+        ],
+        "payoffDate": "2028-09-01",
+        "metadata": {}
+      },
+      {
+        "liabilityId": "liability-card",
+        "name": "Credit Card",
+        "interestRate": 0.21,
+        "paymentCadence": "MONTHLY",
+        "paymentAmount": 200,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 3000
+          }
+        ],
+        "payoffDate": "2026-02-01",
+        "metadata": {}
+      }
+    ]
+  },
+  "incomeAssumptions": {
+    "coastPhase": {
+      "annualNeed": 125000,
+      "annualIncome": 60000,
+      "shortfallPolicy": {
+        "primarySource": "ROTH",
+        "trackRothContributions": true,
+        "earlyWithdrawalPenaltyRate": 0.1
+      }
+    },
+    "retirementPhase": {
+      "annualNeed": 125000,
+      "medicalNeed": 17000
+    },
+    "socialSecurity": {
+      "startAge": 70,
+      "baseAnnualBenefit": 55000,
+      "colaRate": 0.025
+    },
+    "otherIncomeSources": []
+  },
+  "expenseAssumptions": {
+    "globalInflationRate": 0.025,
+    "expenseCategories": []
+  },
+  "events": [
+    {
+      "eventId": "event-roof-replacement",
+      "name": "Roof Replacement",
+      "eventType": "EXPENSE",
+      "age": 55,
+      "amount": 15000,
+      "applyInflation": true
+    }
+  ],
+  "housingTransition": {
+    "enabled": true,
+    "targetAge": 50,
+    "salePrice": 650000,
+    "replacementCost": 400000,
+    "transactionCostsModeled": false
+  },
+  "projectionSettings": {
+    "rateOfReturnByPhase": {
+      "ACCUMULATION": 0.1,
+      "COAST": 0.06,
+      "RETIREMENT": 0.04
+    },
+    "analysisTimeframe": {
+      "startYear": 2026,
+      "endYear": 2078
+    },
+    "withdrawalOrder": [
+      "NON_QUALIFIED",
+      "QUALIFIED",
+      "HSA",
+      "ROTH",
+      "INSURANCE",
+      "CASH",
+      "LIFESTYLE"
+    ],
+    "projectionYears": []
+  },
+  "persistencePolicy": {
+    "snapshotExportMode": "PROMPT",
+    "storagePath": "~/Documents/firefly/sample-coast-fire-001.json"
+  }
+}
