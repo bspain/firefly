@@ -55,7 +55,10 @@ ipcMain.handle('load-plan', async (event, filePath?: string) => {
   try {
     let targetPath = filePath;
     
-    if (!targetPath) {
+    // Handle special case for sample plan
+    if (filePath === 'SAMPLE') {
+      targetPath = path.join(__dirname, '../models/samples/coast-fire-001.json');
+    } else if (!targetPath) {
       const result = await dialog.showOpenDialog({
         properties: ['openFile'],
         filters: [
@@ -71,7 +74,7 @@ ipcMain.handle('load-plan', async (event, filePath?: string) => {
       targetPath = result.filePaths[0];
     }
     
-    const data = fs.readFileSync(targetPath, 'utf-8');
+    const data = await fs.promises.readFile(targetPath, 'utf-8');
     currentPlan = loadPlan(data);
     
     return { success: true, plan: currentPlan };
@@ -118,11 +121,18 @@ ipcMain.handle('save-plan', async (event, filePath?: string) => {
     let targetPath = filePath;
     
     if (!targetPath) {
+      // Sanitize filename more robustly
+      const sanitizedName = currentPlan.label
+        .replace(/[^a-z0-9\s-]/gi, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-')
+        .toLowerCase() || 'plan';
+      
       const result = await dialog.showSaveDialog({
         filters: [
           { name: 'JSON Files', extensions: ['json'] }
         ],
-        defaultPath: currentPlan.label.replace(/[^a-z0-9]/gi, '-').toLowerCase() + '.json'
+        defaultPath: `${sanitizedName}.json`
       });
       
       if (result.canceled || !result.filePath) {
@@ -133,7 +143,7 @@ ipcMain.handle('save-plan', async (event, filePath?: string) => {
     }
     
     const jsonData = JSON.stringify(currentPlan, null, 2);
-    fs.writeFileSync(targetPath, jsonData, 'utf-8');
+    await fs.promises.writeFile(targetPath, jsonData, 'utf-8');
     
     return { success: true, path: targetPath };
   } catch (error) {

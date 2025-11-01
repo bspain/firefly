@@ -85,6 +85,9 @@ function calculateYearProjection(
   });
   
   // Calculate investment interest (simplified - actual implementation would track portfolio)
+  // TODO: Implement full portfolio tracking with compound interest calculations
+  // This will be implemented in a future feature to track portfolio balance over time
+  // and calculate actual investment returns based on rate of return and phase
   // const rateOfReturn = plan.projectionSettings.rateOfReturnByPhase[phase];
   
   // Calculate gap (simplified)

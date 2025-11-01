@@ -54,8 +54,8 @@ loadPlanBtn.addEventListener('click', async () => {
 });
 
 loadSampleBtn.addEventListener('click', async () => {
-  // Load the sample plan from models/samples/coast-fire-001.json
-  const result = await window.electronAPI.loadPlan('./models/samples/coast-fire-001.json');
+  // Load the sample plan - let the main process resolve the path
+  const result = await window.electronAPI.loadPlan('SAMPLE');
   handleLoadResult(result);
 });
 
