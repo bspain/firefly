@@ -18,7 +18,9 @@
 - **Projection Table**: The annual view summarizing income sources, expense totals, investment returns, funding gaps, and remaining principal for each year of the plan.
 - **Scenario Slider**: An interactive control on the summary page allowing quick adjustments to key assumptions (e.g., coast start age, inflation rate, rates of return).
 
-## Workflow Concepts
+## Application Assets and Concepts
 - **Plan File**: The persisted data store containing all user inputs, assumptions, and projection parameters.
 - **Snapshot Export**: Optional operation that saves the current asset and liability lists to a timestamped copy during plan saves.
-- **Specification by Example**: Requirements technique using concrete examples (Given-When-Then) to describe expected behaviors.
+
+## Development Practices
+- **Specification by Example**: Requirements technique using concrete examples (Given-When-Then) to describe expected user and application behaviors.

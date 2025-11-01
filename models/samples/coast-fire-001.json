@@ -52,7 +52,16 @@
         "accountId": "asset-qualified",
         "name": "Qualified Investment Accounts",
         "accountType": "QUALIFIED",
-        "currentBalance": 1000000,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 1000000
+          },
+          {
+            "date": "2025-11-15",
+            "amount": 1005000
+          }
+        ],
         "costBasis": 680000,
         "allowRothContributionWithdrawals": false,
         "metadata": {
@@ -63,7 +72,12 @@
         "accountId": "asset-roth",
         "name": "Roth Accounts",
         "accountType": "ROTH",
-        "currentBalance": 225000,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 225000
+          }
+        ],
         "costBasis": 185000,
         "allowRothContributionWithdrawals": true,
         "metadata": {}
@@ -72,7 +86,12 @@
         "accountId": "asset-insurance",
         "name": "Accumulated Life Insurance Value",
         "accountType": "INSURANCE",
-        "currentBalance": 100000,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 100000
+          }
+        ],
         "costBasis": 75000,
         "allowRothContributionWithdrawals": false,
         "metadata": {}
@@ -81,7 +100,12 @@
         "accountId": "asset-non-qualified",
         "name": "Taxable Brokerage",
         "accountType": "NON_QUALIFIED",
-        "currentBalance": 65000,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 65000
+          }
+        ],
         "costBasis": 50000,
         "allowRothContributionWithdrawals": false,
         "metadata": {}
@@ -90,7 +114,12 @@
         "accountId": "asset-cash",
         "name": "Cash Accounts",
         "accountType": "CASH",
-        "currentBalance": 30000,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 30000
+          }
+        ],
         "costBasis": 30000,
         "allowRothContributionWithdrawals": false,
         "metadata": {}
@@ -99,7 +128,12 @@
         "accountId": "asset-hsa",
         "name": "Health Savings Accounts",
         "accountType": "HSA",
-        "currentBalance": 30000,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 30000
+          }
+        ],
         "costBasis": 30000,
         "allowRothContributionWithdrawals": false,
         "metadata": {}
@@ -108,7 +142,12 @@
         "accountId": "asset-lifestyle",
         "name": "Primary Residence",
         "accountType": "LIFESTYLE",
-        "currentBalance": 650000,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 650000
+          }
+        ],
         "costBasis": 420000,
         "allowRothContributionWithdrawals": false,
         "metadata": {
@@ -120,30 +159,45 @@
       {
         "liabilityId": "liability-mortgage",
         "name": "Primary Mortgage",
-        "balance": 130000,
         "interestRate": 0.04,
         "paymentCadence": "MONTHLY",
         "paymentAmount": 1400,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 130000
+          }
+        ],
         "payoffDate": "2034-06-01",
         "metadata": {}
       },
       {
         "liabilityId": "liability-auto",
         "name": "Automobile Loan",
-        "balance": 28000,
         "interestRate": 0.05,
         "paymentCadence": "MONTHLY",
         "paymentAmount": 550,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 28000
+          }
+        ],
         "payoffDate": "2028-09-01",
         "metadata": {}
       },
       {
         "liabilityId": "liability-card",
         "name": "Credit Card",
-        "balance": 3000,
         "interestRate": 0.21,
         "paymentCadence": "MONTHLY",
         "paymentAmount": 200,
+        "balanceHistory": [
+          {
+            "date": "2025-11-01",
+            "amount": 3000
+          }
+        ],
         "payoffDate": "2026-02-01",
         "metadata": {}
       }

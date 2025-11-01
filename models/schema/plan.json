@@ -217,6 +217,23 @@
         }
       }
     },
+    "BalanceSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "date",
+        "amount"
+      ],
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date"
+        },
+        "amount": {
+          "type": "number"
+        }
+      }
+    },
     "Accounts": {
       "type": "object",
       "additionalProperties": false,
@@ -246,7 +263,7 @@
         "accountId",
         "name",
         "accountType",
-        "currentBalance"
+        "balanceHistory"
       ],
       "properties": {
         "accountId": {
@@ -258,8 +275,12 @@
         "accountType": {
           "$ref": "#/definitions/AccountType"
         },
-        "currentBalance": {
-          "type": "number"
+        "balanceHistory": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/BalanceSnapshot"
+          }
         },
         "costBasis": {
           "type": "number"
@@ -280,10 +301,10 @@
       "required": [
         "liabilityId",
         "name",
-        "balance",
         "interestRate",
         "paymentCadence",
-        "paymentAmount"
+        "paymentAmount",
+        "balanceHistory"
       ],
       "properties": {
         "liabilityId": {
@@ -291,9 +312,6 @@
         },
         "name": {
           "type": "string"
-        },
-        "balance": {
-          "type": "number"
         },
         "interestRate": {
           "type": "number"
@@ -303,6 +321,13 @@
         },
         "paymentAmount": {
           "type": "number"
+        },
+        "balanceHistory": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/definitions/BalanceSnapshot"
+          }
         },
         "payoffDate": {
           "type": "string",
